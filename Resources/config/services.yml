@@ -1,0 +1,3 @@
+services:
+  Magelan\HtmlToPdfBundle\Service\PdfGenerator:
+      arguments: ['%magelan.htmltopdf.config%']
