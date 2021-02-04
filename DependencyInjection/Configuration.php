@@ -17,21 +17,20 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('magelan_html_to_pdf');
-        $rootNode
+        $treeBuilder = new TreeBuilder('magelan_html_to_pdf');
+        $treeBuilder->getRootNode()
             ->children()
-                ->scalarNode('entrypoint')
-                    ->info('The htmltopdf endpoint')
-                    ->isRequired()
-                    ->cannotBeEmpty()
-                ->end()
-                ->arrayNode('settings')
-                    ->useAttributeAsKey('name')
-                    ->arrayPrototype()
-                        ->variablePrototype()->end()
-                    ->end()
-                ->end()
+            ->scalarNode('entrypoint')
+            ->info('The htmltopdf endpoint')
+            ->isRequired()
+            ->cannotBeEmpty()
+            ->end()
+            ->arrayNode('settings')
+            ->useAttributeAsKey('name')
+            ->arrayPrototype()
+            ->variablePrototype()->end()
+            ->end()
+            ->end()
             ->end();
 
         return $treeBuilder;
